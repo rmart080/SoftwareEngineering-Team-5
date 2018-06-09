@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from pymongo import Connection
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my apps
-    'carts',
     'products',
     'search',
 ]
@@ -77,6 +77,13 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+databasename = "bookstore"
+connection = Connection()
+db = connection[databasename]
+books = db['books']
+
+
 
 DATABASES = {
     'default': {
